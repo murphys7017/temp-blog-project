@@ -4,6 +4,10 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
+  <navbar class="button-navbar">
+    <img alt="user avatat" class="botton-avatar" src="https://blog.murphyspolaris.icu/images/avatar.png">
+    
+  </navbar>
   <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
@@ -17,21 +21,31 @@ import HelloWorld from './components/HelloWorld.vue'
     </div>
   </header>
 
-  <navbar class="button-navbar">
-    ..........................................
-  </navbar>
+
 
   <RouterView />
 </template>
 
 <style scoped>
+.botton-avatar{
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+}
 .button-navbar {
   width: 90%;
   height: 80px;
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   z-index: 10;
   left: 5%;
+  backdrop-filter: blur(3px);
+  float: left;
+  border-radius: 50px 35px 15px 50px
+}
+.button-navbar:hover {
+  background-color: rgba(144, 233, 218, 0.911);
+  backdrop-filter: blur(3px);
 }
 
 header {
