@@ -1,18 +1,25 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import { ref } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
+
+let randomTips = ref('You’ve successfully created a project with Vite + Vue 3. Whats next?')
+
+function gotoTips() {
+  console.log(randomTips.value)
+}
 </script>
 
 <template>
   <navbar>
-    <img alt="user avatat" class="navbar-avatar" src="https://blog.murphyspolaris.icu/images/avatar.png">
+    <img alt="user avatat" class="navbar-avatar" src="/avatar.png">
     <div class="navbar-info">
       some info
     </div>
-    <div class="card">
+    <div class="card" @click="gotoTips">
       <!-- <img class="card-img" src="https://blog.murphyspolaris.icu/images/avatar.png"> -->
       <div class="card-content">
-        <p>You’ve successfully created a project with Vite + Vue 3. What's next?</p>
+        <p>{{randomTips}}</p>
       </div>
 
     </div>
@@ -44,6 +51,7 @@ import HelloWorld from './components/HelloWorld.vue'
   display: flex;
   align-items: center;
   height: 40px;
+  caret-color: transparent;
 }
 .card-img {
   width: 40px;
@@ -69,6 +77,7 @@ import HelloWorld from './components/HelloWorld.vue'
   padding: 10px;
   flex-direction: row;
   right: 10px;
+  caret-color: transparent;
   transition: 
     margin-top 1.2s,
     right 1s;
