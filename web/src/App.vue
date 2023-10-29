@@ -14,7 +14,10 @@ function gotoTips() {
   <navbar>
     <img alt="user avatat" class="navbar-avatar" src="/avatar.png">
     <div class="navbar-info">
-      some info
+      Aki Polaris
+    </div>
+    <div>
+    ......  
     </div>
     <div class="card" @click="gotoTips">
       <!-- <img class="card-img" src="https://blog.murphyspolaris.icu/images/avatar.png"> -->
