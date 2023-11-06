@@ -4,14 +4,11 @@ import { defineStore } from 'pinia'
 import { axiosGet } from "../axios/api";
 
 const res = await axiosGet(`bsaeInfo`);
-console.log(res);
 
-export const baseInfo = defineStore('baseInfo', () => {
-  const count = ref(0)
-  const doubleCount = computed(() => count.value * 2)
-  function increment() {
-    count.value++
-  }
+export const baseInfoStore = defineStore('baseInfo', () => {
+  const avatar = ref(res.data.Avatar)
+  const name = ref(res.data.Name)
+  const serverName = ref(res.data.ServerName)
 
-  return { count, doubleCount, increment }
+  return { avatar, name, serverName }
 })
