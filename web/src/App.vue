@@ -3,6 +3,10 @@ import { RouterLink, RouterView } from 'vue-router'
 import { ref } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
 
+
+
+
+
 let randomTips = ref('You’ve successfully created a project with Vite + Vue 3. Whats next?')
 
 function gotoTips() {
@@ -46,7 +50,10 @@ function gotoTips() {
 
 
 
-  <RouterView />
+  <Suspense>
+    <RouterView />
+  </Suspense>
+  
 </template>
 
 <style scoped>
