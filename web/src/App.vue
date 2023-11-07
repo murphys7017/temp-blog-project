@@ -66,6 +66,7 @@ function gotoTips() {
   align-items: center;
   height: 40px;
   caret-color: transparent;
+  display: inline;
 }
 .card-img {
   width: 40px;
@@ -82,16 +83,18 @@ function gotoTips() {
   margin-left: 15px;
   transform: translateX(0);
   transition: transform 0.8s;
+  visibility: hidden;
 }
 .card {
-  display: flex;
+  display: inline;
   position: fixed;
-  max-width: 40vw;
+  width: 90%;
   height: 50px;
   padding: 10px;
-  flex-direction: row;
-  right: 10px;
+  left: 60px;
+  margin: 5px;
   caret-color: transparent;
+  text-align: center;
   transition: 
     margin-top 1.2s,
     right 1s;
@@ -136,6 +139,7 @@ navbar:hover .card{
   right: 5vw;
 }
 navbar:hover .navbar-info{
+  visibility: visible;
   transform: translateX(-60px);
   transition: transform 0.8s;
 }
