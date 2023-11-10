@@ -39,8 +39,8 @@ let randomImage = ref('https://hkngrok.murphyspolaris.icu/File/816e550d895b280a9
   </article>
 </template>
 
-<style lang="sass" module>
-.item {
-  
-}
+<style lang="stylus" scoped>
+@import '../styles/main.styl';
+
+
 </style>

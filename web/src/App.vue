@@ -3,10 +3,15 @@ import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import Navbar from './components/Navbar.vue';
 import ArticleCard from './components/ArticleCard.vue';
+import wave from './components/wave.vue';
+import BackgroundImg from './components/BackgroundImg.vue';
 </script>
 
 <template>
+  <BackgroundImg />
+  <wave></wave>
   <ArticleCard />
+  
   
 
   <header>

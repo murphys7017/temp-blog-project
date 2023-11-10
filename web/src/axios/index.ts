@@ -2,7 +2,7 @@ import axios from "axios";
 
 // 创建实例
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: "https://hkngrok.murphyspolaris.icu/BlogBK",
 });
 
 // 添加请求拦截器
