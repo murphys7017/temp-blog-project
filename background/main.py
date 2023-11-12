@@ -29,6 +29,7 @@ def read_base_info():
             "ServerName": "Aki's Server",
             "ServerVersion": 0.01,
             "ServerDescription": "Aki's Server",
+            "ServerRoot": 'https://blog.murphyspolaris.icu/',
             "Avatar": "https://hkngrok.murphyspolaris.icu/File/avatar.webp",
             "PostInfo": {
                 "number": {
@@ -42,6 +43,10 @@ def read_base_info():
                     "link": 'https://github.com/murphys7017',
                     "icon": 'github'
                 },
+                {
+                    "link": 'mailto:Yuki7017@outlook.com',
+                    "icon": 'email'
+                }
             ],
             "Menus": {
 

@@ -394,7 +394,9 @@
   .i-envelope:before {
     content: "\efae";
   }
-  
+  .i-email:before {
+    content: "\efae";
+  }
   .i-external-link-alt:before {
     content: "\efb6";
   }

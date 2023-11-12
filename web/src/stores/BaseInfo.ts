@@ -14,6 +14,7 @@ export const baseInfoStore = defineStore('baseInfo', () => {
   const serverName = ref(res.data.ServerName)
   const serverVersion = ref(res.data.ServerVersion)
   const serverDescription = ref(res.data.ServerDescription)
+  const serverRoot = ref(res.data.ServerRoot)
 
   const postInfo = ref(res.data.PostInfo)
 
@@ -31,6 +32,7 @@ export const baseInfoStore = defineStore('baseInfo', () => {
     serverName,
     serverVersion,
     serverDescription, 
+    serverRoot,
 
     postInfo,
 
