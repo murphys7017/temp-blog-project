@@ -25,13 +25,26 @@ app.add_middleware(
 def read_base_info():
     return {
             "Name": "Alice",
+            "Description": "User Description",
             "ServerName": "Aki's Server",
+            "ServerVersion": 0.01,
+            "ServerDescription": "Aki's Server",
             "Avatar": "https://hkngrok.murphyspolaris.icu/File/avatar.webp",
-            "OutLinks":{
-                "Github": {
+            "PostInfo": {
+                "number": {
+                    "post": 1,
+                    "tag": 2,
+                    "category": 1
+                }
+            },
+            "Socials":[
+                {
                     "link": 'https://github.com/murphys7017',
                     "icon": 'github'
                 },
+            ],
+            "Menus": {
+
             },
             "CoverImages": [
                 'https://hkngrok.murphyspolaris.icu/File/-781c4e03c89f9fa5.webp',
