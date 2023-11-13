@@ -19,7 +19,7 @@
   min-height: 3.125rem;
   max-height: 9.375rem;
   position: relative;
-  top: 70vh;
+  //top: 70vh;
 
   +mobile() {
     height: 10vh;
