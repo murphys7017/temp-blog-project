@@ -10,5 +10,8 @@
   ],
   "compilerOptions": {
     "types": ["vite/client","node"],
-  }
+  },
+  "typeRoots": [
+    "node_modules/@types"
+  ]
 }

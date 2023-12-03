@@ -10,11 +10,16 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false"
   },
   "dependencies": {
-    "@types/js-yaml": "^4.0.9",
-    "@types/node": "^20.10.2",
-    "@types/yamljs": "^0.2.34",
     "@vueuse/core": "^10.6.0",
     "axios": "^1.6.0",
+    "markdown-it-abbr": "^1.0.4",
+    "markdown-it-container": "^3.0.0",
+    "markdown-it-emoji": "^2.0.2",
+    "markdown-it-footnote": "^3.0.3",
+    "markdown-it-ins": "^3.0.1",
+    "markdown-it-mark": "^3.0.1",
+    "markdown-it-sub": "^1.0.0",
+    "markdown-it-sup": "^1.0.0",
     "node-fetch": "^3.3.2",
     "node-sass": "^9.0.0",
     "pinia": "^2.1.7",
@@ -24,6 +29,7 @@
   },
   "devDependencies": {
     "@tsconfig/node18": "^18.2.2",
+    "@types/node": "^18.18.5",
     "@vitejs/plugin-vue": "^4.4.0",
     "@vue/tsconfig": "^0.4.0",
     "npm-run-all2": "^6.1.1",

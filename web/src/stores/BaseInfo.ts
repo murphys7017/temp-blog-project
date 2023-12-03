@@ -37,6 +37,9 @@ let res = JSON.parse(`
 }
 `)
 console.log(res)
+
+
+
 export const baseInfoStore = defineStore('baseInfo', () => {
   const isMobile = ref(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))
   const avatar = ref(res.Avatar)

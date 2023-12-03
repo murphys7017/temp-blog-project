@@ -102,12 +102,12 @@ body {
   }
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family: $font-family-headings;
+  font-family: 'PingFang SC';
   font-weight: bold;
   line-height: 1.5;
   margin: 1.25rem 0 .9375rem;
   &.title {
-    font-family: $font-family-title;
+    font-family: 'FrederickatheGreat';
   }
 }
 
@@ -178,16 +178,6 @@ input, textarea {
   color: var(--text-color);
 }
 
-@font-face {
-  font-family: 'ic';
-  src: url('//at.alicdn.com/t/font_' + $iconfont + '.eot');
-  src: url('//at.alicdn.com/t/font_' + $iconfont + '.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_' + $iconfont + '.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_' + $iconfont + '.woff') format('woff'),
-  url('//at.alicdn.com/t/font_' + $iconfont + '.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_' + $iconfont + '.svg#ic') format('svg');
-}
-
 .ic {
   font-family: "ic" !important;
   -webkit-font-smoothing: antialiased;
@@ -210,3 +200,14 @@ input, textarea {
   line-height: .75em;
   vertical-align: -.0667em;
 }
+
+@font-face {
+  font-family: 'FrederickatheGreat';
+  src: url('./font/FrederickatheGreat-Regular-2.ttf')
+}
+
+@font-face {
+  font-family: 'PingFang SC';
+  src: url('./font/苹方-简 常规体.otf')
+}
+

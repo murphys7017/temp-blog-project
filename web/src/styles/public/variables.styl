@@ -10,19 +10,19 @@ get_font_family(config) {
 }
 
 // Font families.
-$font-family-chinese      = -apple-system, "PingFang SC", "Microsoft YaHei";
+$font-family-chinese = -apple-system, "PingFang SC", "Microsoft YaHei";
 
-$font-family-base         = $font-family-chinese, sans-serif;
-$font-family-base       = get_font_family('global'), $font-family-base if get_font_family('global');
+$font-family-base = $font-family-chinese, sans-serif;
+$font-family-base = get_font_family('global'), $font-family-base if get_font_family('global');
 
-$font-family-logo         = $font-family-base;
-$font-family-logo         = get_font_family('logo'), $font-family-base if get_font_family('title');
+$font-family-logo = $font-family-base;
+$font-family-logo = get_font_family('logo'), $font-family-base if get_font_family('title');
 
-$font-family-title         = $font-family-base;
-$font-family-title         = get_font_family('title'), $font-family-base if get_font_family('title');
+$font-family-title = 'FrederickatheGreat';
+$font-family-title = get_font_family('title'), $font-family-base if get_font_family('title');
 
-$font-family-headings     = $font-family-base;
-$font-family-headings     = get_font_family('headings'), $font-family-title if get_font_family('headings');
+$font-family-headings = $font-family-base;
+$font-family-headings = get_font_family('headings'), $font-family-title if get_font_family('headings');
 $font-family-headings     = get_font_family('global'), $font-family-headings if get_font_family('global');
 $font-family-title         = get_font_family('title'), get_font_family('headings'), $font-family-base if get_font_family('headings');
 $font-family-title         = get_font_family('global'), $font-family-title if get_font_family('global');
@@ -33,7 +33,6 @@ $font-family-posts        = get_font_family('posts'), $font-family-base if get_f
 $font-family-monospace    = consolas, Menlo, $font-family-chinese;
 $font-family-monospace    = get_font_family('codes'), consolas, Menlo, $font-family-chinese if get_font_family('codes');
 
-$iconfont = hexo-config('iconfont');
 
 // Font size
 $font-size-smallest       = .75em;

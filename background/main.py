@@ -21,6 +21,8 @@ app.add_middleware(
 
 
 
+
+
 @app.get("/bsaeInfo")
 def read_base_info():
     return {
