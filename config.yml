@@ -1,0 +1,23 @@
+Name: Alice
+Description: User Description
+ServerName: Aki's Server
+ServerVersion: 0.01
+ServerDescription: Aki's Server
+ServerRoot: 'http://localhost:9000/'
+Avatar: 'http://localhost:9000/avatar.webp'
+PostInfo:
+  number:
+    post: 1
+    tag: 2
+    category: 1
+Socials:
+  - link: 'https://github.com/murphys7017'
+    icon: github
+  - link: 'mailto:Yuki7017@outlook.com'
+    icon: email
+Menus: {}
+CoverImages:
+  - 'http://localhost:9000/-781c4e03c89f9fa5.webp'
+  - http://localhost:9000/0146690c71602f456b89e1b688c93bfe328597.jpg%401036w.webp
+  - http://localhost:9000/a4fc8c7d98330a06d16acfc237bedfce328597.webp
+  - 'http://localhost:9000/bf0be63881IqXKX.webp'
