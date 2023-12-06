@@ -3,7 +3,7 @@ import { h, ref } from 'vue';
 
 let randomImage = ref('https://hkngrok.murphyspolaris.icu/File/816e550d895b280a956dcab8baf20a77328597.jpg%401036w.webp')
 
-import ArticleCard from '@/components/ArticleCard.vue';
+import ArticleCard from '../components/ArticleCard.vue';
 
 const data = ref([
   {

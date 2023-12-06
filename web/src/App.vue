@@ -4,7 +4,7 @@ import Navbar from './components/Navbar.vue';
 import wave from './components/wave.vue';
 import BackgroundImg from './components/BackgroundImg.vue';
 import overview from './components/overview.vue';
-import { baseInfoStore } from '@/stores/BaseInfo';
+import { baseInfoStore } from './stores/BaseInfo';
 const baseInfo = baseInfoStore()
 
 async function fetchHitokoto() {

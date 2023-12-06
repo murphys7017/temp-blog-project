@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { ref } from 'vue'
 import { baseInfoStore } from '@/stores/BaseInfo';
 const baseInfo = baseInfoStore()

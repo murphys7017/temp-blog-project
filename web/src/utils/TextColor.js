@@ -9,9 +9,9 @@ const colorByBgColor = new Map()
 
 const rgbRegex = /^rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)$/
 
-const hex = (x: string) => ("0" + parseInt(x).toString(16)).slice(-2);
+const hex = (x) => ("0" + parseInt(x).toString(16)).slice(-2);
 
-function convertRGBToHex(rgb: string): string {
+function convertRGBToHex(rgb) {
   const bg = rgb.match(rgbRegex);
   if (!bg) {
     return ''
@@ -24,7 +24,7 @@ const CACHE_ERROR = 'error'
 /**
  * @param backgroundColor 字符串  #FFFBBC | rgb(222,33,44) 均可
  */
-export function contrastTextColor(backgroundColor: string) {
+export function contrastTextColor(backgroundColor) {
   const cacheColor = colorByBgColor.get(backgroundColor)
   if (cacheColor) {
     if (cacheColor === CACHE_ERROR) {

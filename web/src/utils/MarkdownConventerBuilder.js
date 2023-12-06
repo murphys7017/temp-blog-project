@@ -1,3 +1,4 @@
+var hljs = require('highlight.js');
 const md = require('markdown-it')({
     html:         true,        // 在源码中启用 HTML 标签
     xhtmlOut:     false,        // 使用 '/' 来闭合单标签 （比如 <br />）。
@@ -19,7 +20,15 @@ const md = require('markdown-it')({
     // 高亮函数，会返回转义的HTML。
     // 或 '' 如果源字符串未更改，则应在外部进行转义。
     // 如果结果以 <pre ... 开头，内部包装器则会跳过。
-    highlight: function (/*str, lang*/) { return ''; }
+    highlight: function (str, lang) {
+      if (lang && hljs.getLanguage(lang)) {
+        try {
+          return hljs.highlight(lang, str).value;
+        } catch (__) {}
+      }
+  
+      return ''; // 使用额外的默认转义
+    }
   })
 md.use(require('markdown-it-sub'))
 md.use(require('markdown-it-emoji'))
@@ -32,14 +41,17 @@ md.use(require('markdown-it-mark'));
 
 md.use(require('markdown-it-container'), 'worring', {
     // 建议是否符合要求
-    validate: function(params:any) {
+    validate: function(params) {
       return params.trim().match(/^worring\s+(.*)$/);
     },
 
     // 渲染成html
-    render: function (tokens:any, idx:any) {
+    render: function (tokens, idx) {
         console.log(tokens)
         console.log(idx)
     }
 })
 
+export default {
+  md
+}

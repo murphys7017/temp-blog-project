@@ -1,5 +1,5 @@
-<script lang="ts" setup>
-import { baseInfoStore } from '@/stores/BaseInfo';
+<script setup>
+import { baseInfoStore } from '../stores/BaseInfo';
 const baseInfo = baseInfoStore()
 </script>
 <template>
