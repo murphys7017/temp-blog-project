@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { baseInfoStore } from '@/stores/BaseInfo';
+import { baseInfoStore } from '../stores/BaseInfo';
 const baseInfo = baseInfoStore()
 
 let randomTips = ref('You’ve successfully created a project with Vite + Vue 3. Whats next?')

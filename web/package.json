@@ -11,6 +11,8 @@
   "dependencies": {
     "@vueuse/core": "^10.6.0",
     "axios": "^1.6.0",
+    "highlight.js": "^11.9.0",
+    "markdown-it": "^14.0.0",
     "markdown-it-abbr": "^1.0.4",
     "markdown-it-container": "^3.0.0",
     "markdown-it-emoji": "^2.0.2",

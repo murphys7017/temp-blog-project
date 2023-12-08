@@ -1,9 +1,10 @@
-<script setup lang="ts">
+<script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import Navbar from './components/Navbar.vue';
 import wave from './components/wave.vue';
 import BackgroundImg from './components/BackgroundImg.vue';
 import overview from './components/overview.vue';
+import ReadView from './views/ReadView.vue';
 import { baseInfoStore } from './stores/BaseInfo';
 const baseInfo = baseInfoStore()
 
@@ -115,6 +116,7 @@ fetchHitokoto()
     <div style="display: flex;margin 50px">
       <div id="main">
         <RouterView/>
+        <ReadView></ReadView>
       </div>
       <div id="sidebar">
         <overview></overview>
