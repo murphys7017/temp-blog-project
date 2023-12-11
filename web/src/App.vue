@@ -122,7 +122,7 @@ fetchHitokoto()
         <overview></overview>
       </div>
     </div>
-    <PostRender></PostRender>
+  
   </main>
   
   <!-- <Navbar /> -->
