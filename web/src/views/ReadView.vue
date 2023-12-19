@@ -13,58 +13,9 @@ import ins from 'markdown-it-ins'
 import mark from 'markdown-it-mark'
 import container from 'markdown-it-container'
 
-const md = markdownit({
-    html:         true,        // 在源码中启用 HTML 标签
-    xhtmlOut:     false,        // 使用 '/' 来闭合单标签 （比如 <br />）。
-                                // 这个选项只对完全的 CommonMark 模式兼容。
-    breaks:       false,        // 转换段落里的 '\n' 到 <br>。
-    langPrefix:   'language-',  // 给围栏代码块的 CSS 语言前缀。对于额外的高亮代码非常有用。
-    linkify:      true,        // 将类似 URL 的文本自动转换为链接。
-  
-    // 启用一些语言中立的替换 + 引号美化
-    typographer:  true,
-  
-    // 双 + 单引号替换对，当 typographer 启用时。
-    // 或者智能引号等，可以是 String 或 Array。
-    //
-    // 比方说，你可以支持 '«»„“' 给俄罗斯人使用， '„“‚‘'  给德国人使用。
-    // 还有 ['«\xA0', '\xA0»', '‹\xA0', '\xA0›'] 给法国人使用（包括 nbsp）。
-    quotes: '“”‘’',
-  
-    // 高亮函数，会返回转义的HTML。
-    // 或 '' 如果源字符串未更改，则应在外部进行转义。
-    // 如果结果以 <pre ... 开头，内部包装器则会跳过。
-    highlight: function (str, lang) {
-      if (lang && hljs.getLanguage(lang)) {
-        try {
-          return hljs.highlight(lang, str).value;
-        } catch (__) {}
-      }
-  
-      return ''; // 使用额外的默认转义
-    }
-  })
-md.use(sub)
-md.use(emoji)
-md.use(sup)
-md.use(footnote);
-md.use(abbr);
-md.use(ins);
-md.use(mark);
+import Md from '../utils/renderer'
 
-
-md.use(container, 'worring', {
-    // 建议是否符合要求
-    validate: function(params) {
-      return params.trim().match(/^worring\s+(.*)$/);
-    },
-
-    // 渲染成html
-    render: function (tokens, idx) {
-        console.log(tokens)
-        console.log(idx)
-    }
-})
+let md = Md(markdata,{})
 const markdata = `
 ---
 title: JavaWeb项目开发流程
@@ -137,15 +88,77 @@ console.log(md.render(markdata))
 let htmlcode = ref(md.render(markdata))
 </script>
 <template>
-  <div>
-    <div v-html="htmlcode" class="md">
+  <div class="article wrap">
+    <div class="breadcrumb">
+      <i class="ic i-home"></i> 
+      <span><a href="/">首页</a></span>
+      <i class="ic i-angle-right"></i> 
+      <span class="current">
+        <a href="/categories/%E4%BB%A3%E7%A0%81%E6%9D%82%E8%B0%88/"  rel="index" title="分类于 代码杂谈">
+          <span>代码杂谈</span>
+        </a>
+        <meta content="1">
+      </span>
     </div>
-  </div>
-  <copyright></copyright>
+    <article class="post block">
+      <link href="http://blog.murphyspolaris.icu/Alice%20Bot%E7%9A%84%E9%87%8D%E5%86%99%E6%97%A5%E8%AE%B0/">
+      <span hidden="" >
+        <meta  content="/images/avatar.png">
+        <meta  content="Aki Polaris">
+        <meta itemprop="description" content="Aki的日记本, 这里是Aki的个人日记本">
+      </span>
+      <span hidden="">
+        <meta itemprop="name" content="Polaris"></span>
+        <div class="body md" itemprop="articleBody">
+          <h1 id="bot-and-tool-parrot" class="active">
+            <a class="anchor" href="#bot-and-tool-parrot" >#</a> 
+            Bot-And-Tool Parrot
+          </h1>
+          <p>从一开始的就是单纯的给函数一个注解然后去根据消息调用函数生成响应<br>到添加了固定回复功能<br>再到引入 doc2vec 进行向量化预测匹配<br>再到现在的快要成形的，消息接收，搜索匹配，逻辑处理，响应生成多个模块</p>
+          <p>目前项目只是起步阶段，文档更新的比较慢，毕竟我平时最讨厌两件事，一件事是写文档，另一件事是写注释。</p>
+          <p>目前来说完成了基础的底层功能开始设计整个 bot 了</p>
+          <p>从今天开始这个项目将不在含有 QQ 部分，等局势好转后在考虑适配了。<br>其实这个做这个项目一开始想的是在尽可能低占用的情况下来实现一个功能较为丰富的 bot，但是我选择了使用 python 作为开发语言，所以已经不关心占用了，后续基本完成后可能会迁移到 go。<br>目前这个项目暂定的名字是 Parrot，他本质上就是一个复读机，顶多是讲点逻辑的复读机，并不想上生成式的 Ai 模型，对我来说的占用太高了。</p>
+          <p>之前的老项目因为被迫沉迷毕设以及找工作，停止了 bot 的开发，现在工作稳定了（摸鱼摸爽了）决定重新捡起来，目前本项目有以下需要注意的点：</p>
+          <ol><li>我都用 python 写了你还跟我谈性能？</li><li>项目主打的就是一个未来可期好吧</li><li>甭管写的无不无脑，你就说能不能用吧</li><li>我都转通信了别对我要求太高</li></ol>
+          <h2 id="项目结构" class="active"><a class="anchor" href="#项目结构" data-pjax-state="">#</a> 项目结构</h2><p>项目的核心其实就是 MatchSys 文件夹，其他的算是我不断尝试各种库和方法遗留的一些代码之类的。<br>整个项目分为训练、消息处理、相似对话搜索、对搜索结果的逻辑处理、数据存储、工具类、以及主程序和一些其他的代码</p><h3 id="trainer"><a class="anchor" href="#trainer" data-pjax-state="">#</a> trainer</h3><p>此模块主要作用是将对话数据添加到数据库和模型中，目前只实现了 QA 对话，后续继续实现短对话。<br>自定义训练必须继承 <code>Trainer</code> 实现 <code>train</code> 函数最好也把 <code>save</code> 函数一起实现了<br>使用方式</p><figure class="highlight python"><figcaption data-lang="python"></figcaption><div class="code-container"><table><tbody><tr><td data-num="1"></td><td><pre><span class="token keyword">from</span> service<span class="token punctuation">.</span>MatchSys <span class="token keyword">import</span> MatchSys</pre></td></tr><tr><td data-num="2"></td><td><pre>ms <span class="token operator">=</span> MatchSys<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd</pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment"># QA {Q：{A1，A2...} ...}</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token builtin">map</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></pre></td></tr><tr><td data-num="6"></td><td><pre></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token keyword">from</span> service<span class="token punctuation">.</span>MatchSys<span class="token punctuation">.</span>trainer <span class="token keyword">import</span> QATrainer</pre></td></tr><tr><td data-num="8"></td><td><pre>trainer <span class="token operator">=</span> QATrainer<span class="token punctuation">(</span>ms<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="9"></td><td><pre>trainer<span class="token punctuation">.</span>train<span class="token punctuation">(</span><span class="token builtin">map</span><span class="token punctuation">)</span></pre></td></tr></tbody></table></div><div class="operation"><span class="breakline-btn"><i class="ic i-align-left"></i></span><span class="copy-btn"><i class="ic i-clipboard"></i></span><span class="fullscreen-btn"><i class="ic i-expand"></i></span></div></figure><h3 id="message"><a class="anchor" href="#message" data-pjax-state="">#</a> message</h3><p>message 的核心作用就是把接收到的消息转换成标准的 statement 形式，把 statement 输出成需要的形式</p><h3 id="search"><a class="anchor" href="#search" data-pjax-state="">#</a> search</h3><p>search 主要是找出和输入的 statement 相似的已经保存到数据库中的 statement 数据，核心是训练好的 doc2vec 模型，使用 doc2vec 获得相似的 id</p><h3 id="logic"><a class="anchor" href="#logic" data-pjax-state="">#</a> logic</h3><p>此模块主要的作用就是对搜索的 statement 结果列表进行处理选择一个合适的 statement 返回<br>可以在创建 MatchSys 时 logic_adapter_name_list 使用指定使用的逻辑处理器列表，默认使用 <code>service.MatchSys.logic.BestMatch</code> ，可以指定多个逻辑处理器<br>自己的逻辑处理器必须得继承 <code>LogicAdapter</code> 实现 <code>process</code> 和 <code>default_responses_process</code> 两个函数</p><h2 id="使用"><a class="anchor" href="#使用" data-pjax-state="">#</a> 使用</h2><h3 id="依赖"><a class="anchor" href="#依赖" data-pjax-state="">#</a> 依赖</h3><figure class="highlight python"><figcaption data-lang="python"></figcaption><div class="code-container"><table><tbody><tr><td data-num="1"></td><td><pre>websocket <span class="token comment"># ws 客户端</span></pre></td></tr><tr><td data-num="2"></td><td><pre>pandas <span class="token comment"># 读取 excel 等处理数据</span></pre></td></tr><tr><td data-num="3"></td><td><pre>jieba <span class="token comment"># 分词，模糊匹配</span></pre></td></tr><tr><td data-num="4"></td><td><pre>apscheduler <span class="token comment"># 定时任务</span></pre></td></tr><tr><td data-num="5"></td><td><pre>jionlp <span class="token comment"># 工具集，计划用，但是基本没用</span></pre></td></tr><tr><td data-num="6"></td><td><pre>rasa <span class="token comment"># 3 以上，可选</span></pre></td></tr></tbody></table></div><div class="operation"><span class="breakline-btn"><i class="ic i-align-left"></i></span><span class="copy-btn"><i class="ic i-clipboard"></i></span><span class="fullscreen-btn"><i class="ic i-expand"></i></span></div></figure><h3 id="配置"><a class="anchor" href="#配置" data-pjax-state="">#</a> 配置</h3><h1 id="计划"><a class="anchor" href="#计划" data-pjax-state="">#</a> 计划</h1><ul class="task-list"><li class="task-list-item"><input type="checkbox" id="cbx_0" disabled=""><label for="cbx_0">添加短对话训练器</label></li><li class="task-list-item"><input type="checkbox" id="cbx_1" disabled=""><label for="cbx_1">添加根据意图匹配，提升匹配精度</label></li><li class="task-list-item"><input type="checkbox" id="cbx_2" disabled=""><label for="cbx_2">添加从对话中学习</label></li><li class="task-list-item"><input type="checkbox" id="cbx_3" checked="" disabled=""><label for="cbx_3">添加天气</label></li><li class="task-list-item"><input type="checkbox" id="cbx_4" checked="" disabled=""><label for="cbx_4">添加色图</label></li><li class="task-list-item"><input type="checkbox" id="cbx_5" disabled=""><label for="cbx_5">将随机老婆迁移到这里</label></li><li class="task-list-item"><input type="checkbox" id="cbx_6" disabled=""><label for="cbx_6">扩大数据集重新训练</label></li><li class="task-list-item"><input type="checkbox" id="cbx_7" checked="" disabled=""><label for="cbx_7">继续优化代码结构添加对群消息和私聊消息之外的其他类型的支持</label></li><li class="task-list-item"><input type="checkbox" id="cbx_8" checked="" disabled=""><label for="cbx_8">优化配置文件，还有一部分可以添加到配置文件中</label></li><li class="task-list-item"><input type="checkbox" id="cbx_9" disabled=""><label for="cbx_9">添加随机老婆功能</label></li></ul><div class="tags"><a href="/tags/%E8%AE%B0%E5%BD%95-python/" rel="tag" class="info"><i class="ic i-tag"></i> 记录,python</a></div></div>
+      <footer>
+        <div class="meta">
+          <span class="item">
+            <span class="icon">
+              <i class="ic i-calendar-check"></i> 
+            </span>
+            <span class="text">更新于</span> 
+            <time title="修改时间：2023-10-23 08:38:03" >2023-10-23</time>
+          </span>
+        </div>
+        <div class="reward">
+          <button>
+            <i class="ic i-heartbeat"></i> 
+            赞赏
+          </button>
+          <p>请我喝[茶]~(￣▽￣)~*</p>
+
+        </div>
+        <div id="copyright">
+          <ul>
+            <li class="author">
+              <strong>本文作者： </strong>Aki Polaris <i class="ic i-at"><em>@</em></i>Polaris
+            </li>
+            <li class="link">
+              <strong>本文链接：</strong> <a href="http://blog.murphyspolaris.icu/Alice%20Bot%E7%9A%84%E9%87%8D%E5%86%99%E6%97%A5%E8%AE%B0/" title="Alice Bot的重写日记">http://blog.murphyspolaris.icu/Alice Bot的重写日记/</a>
+            </li>
+            <li class="license">
+              <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" class="exturl" title="(CC)BY-NC-SA"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+      </footer>
+    </article>
+    </div>
 </template>
 <style lang="stylus" scoped>
 @import '../styles/main.styl';
-
+@import '../styles/post/post.styl';
 
 
 </style>

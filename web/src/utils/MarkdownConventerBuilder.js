@@ -39,18 +39,9 @@ md.use(require('markdown-it-ins'));
 md.use(require('markdown-it-mark'));
 
 
-md.use(require('markdown-it-container'), 'worring', {
-    // 建议是否符合要求
-    validate: function(params) {
-      return params.trim().match(/^worring\s+(.*)$/);
-    },
 
-    // 渲染成html
-    render: function (tokens, idx) {
-        console.log(tokens)
-        console.log(idx)
-    }
-})
+
+
 
 export default {
   md
